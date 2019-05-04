@@ -75,6 +75,7 @@ int nodeSum(struct tree *t,int x){
 
 
 int main(){
+    int x=2;
     struct tree *root=createNode(4);
     root->left=createNode(2);
     root->right=createNode(5);
@@ -83,6 +84,13 @@ int main(){
     root->right->left=createNode(2);
     root->right->right=createNode(3);
     // printf("\nSum = %d\n",getSum(root));
-    printf("\nParent node Sum = %d\n",nodeSum(root,2));
+    printf("\nParent node Sum = %d\n",nodeSum(root,x));
     return 0;
 }
+
+
+/*
+output :
+
+Parent node Sum = 11
+*/
