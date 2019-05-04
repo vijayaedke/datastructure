@@ -13,7 +13,6 @@ Input : Binary tree with x = 2:
     
 output : 5+1 = 6
 */
-
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -30,23 +29,18 @@ struct tree *createNode(int data){
     return t;
 }
 
-void getSum(struct tree *root,int* sum){
-    if(root==NULL)
-        return;
+int nodeSum(struct tree *root,int* sum){
+     if(root==NULL)
+        return 0;
     if(root->left && root->left->left==NULL && root->left->right==NULL){
+        // printf("\nCurrent root->left = %d",root->left->data);
         *sum+=root->left->data;
     }
 
-    getSum(root->left,sum);
-    getSum(root->right,sum);
+    nodeSum(root->left,sum);
+    nodeSum(root->right,sum);
     
-}
-
-int nodeSum(struct tree *t){
-    int sum=0;
-    getSum(t,&sum);
-    // printf("%dsum",sum);
-    return sum;
+    return *sum;
 }
 
 
@@ -58,8 +52,14 @@ int main(){
     root->left->right=createNode(2);
     root->right->left=createNode(1);
     // printf("\nSum = %d\n",getSum(root));
-    printf("\nLeft child node Sum = %d\n",nodeSum(root));
+    int sum=0;
+    printf("\nLeft child node Sum = %d\n",nodeSum(root,&sum));
     return 0;
 }
 
+
+/*output:
+ 
+Left child node Sum = 6
+*/
 
